@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FoodLive | Restaurant</title><link rel="stylesheet" href="/static/style.css"></head>
+<body>
+<header><div class="brand">🍲 FoodLive</div><nav><a href="/">Customer view</a><a href="/restaurant">Restaurant dashboard</a></nav></header>
+<main>
+<section class="hero"><p class="eyebrow">RESTAURANT CONTROL PANEL</p><h1>Kitchen order dashboard</h1><p>Accept the order, start your camera and let the customer watch preparation.</p></section>
+<section class="grid">
+<article class="panel">
+<div class="row"><h2>Incoming order</h2><span class="tag">#{{ order.id }}</span></div>
+<div class="food"><div class="food-icon">🍛</div><div><b>{{ order.item }}</b><p class="muted">Customer: {{ order.customer }} · Qty {{ order.quantity }}</p><b>₹{{ order.total }}</b></div></div>
+<div class="actions">
+<button id="acceptBtn">Accept order</button>
+<button id="startBtn" class="success" disabled>Start cooking & go LIVE</button>
+<button id="readyBtn" class="secondary" disabled>Food ready</button>
+<button id="pickupBtn" class="secondary" disabled>Picked up</button>
+</div>
+<p class="notice" id="restaurantStatus">Order is waiting for acceptance.</p>
+</article>
+<article class="panel">
+<div class="row"><h2>Your kitchen camera</h2><span class="live" id="cameraBadge">● CAMERA OFF</span></div>
+<div class="video-wrap"><video id="localVideo" autoplay muted playsinline></video><div id="cameraMessage">Camera preview appears here after you start cooking.</div></div>
+<p class="small muted">Use a phone or webcam positioned to show the food preparation area. Keep the camera on the cooking station, not private areas.</p>
+<button id="stopBtn" class="danger" disabled>Stop live video</button>
+</article>
+</section>
+<section class="panel">
+<h2>Before going live</h2>
+<ul class="checklist"><li>Clean cooking station and utensils</li><li>Chef wearing clean apron and hair covering</li><li>Ingredients stored safely</li><li>Do not show customer or staff personal information</li><li>Tell staff that the camera is streaming</li></ul>
+</section>
+</main>
+<script src="/socket.io/socket.io.js"></script><script src="/static/restaurant.js"></script>
+</body></html>

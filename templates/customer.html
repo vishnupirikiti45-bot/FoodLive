@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FoodLive | Customer</title><link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header><div class="brand">🍲 FoodLive</div><nav><a href="/">Customer</a><a href="/restaurant">Restaurant dashboard</a></nav></header>
+<main>
+  <section class="hero"><p class="eyebrow">ORDER · WATCH · ENJOY</p><h1>Your food. Your kitchen view.</h1><p>Follow your order and watch the restaurant prepare it live.</p></section>
+  <section class="grid">
+    <article class="panel">
+      <div class="row"><h2>Your order</h2><span class="tag" id="status">Placed</span></div>
+      <p class="muted">Order <b>{{ order.id }}</b> · {{ order.restaurant }}</p>
+      <div class="food"><div class="food-icon">🍛</div><div><b>{{ order.item }}</b><p class="muted">Qty {{ order.quantity }} · ₹{{ order.total }}</p></div></div>
+      <div class="timeline">
+        <div class="step" id="s1">● Order placed</div><div class="step" id="s2">● Restaurant accepted</div>
+        <div class="step" id="s3">● Preparing your food</div><div class="step" id="s4">● Food ready</div>
+        <div class="step" id="s5">● Picked up / Delivered</div>
+      </div>
+      <p class="notice" id="hint">Waiting for the restaurant to accept your order.</p>
+    </article>
+    <article class="panel">
+      <div class="row"><h2>Live Kitchen</h2><span class="live" id="liveBadge">● NOT LIVE</span></div>
+      <div class="video-wrap"><video id="kitchenVideo" autoplay playsinline controls></video><div id="videoMessage">The live kitchen video will appear here when the restaurant starts cooking.</div></div>
+      <p class="muted small">Live video is available only while this order is being prepared. Allow the restaurant camera to connect.</p>
+      <button id="connectBtn" class="secondary">Connect to live kitchen</button>
+    </article>
+  </section>
+  <section class="panel">
+    <h2>Sample cooking video</h2>
+    <p class="muted">This is a prerecorded demonstration clip, not your order's live camera.</p>
+    <video class="demo-video" controls playsinline preload="metadata">
+      <source src="https://videos.pexels.com/video-files/6970332/6970332-hd_1920_1080_30fps.mp4" type="video/mp4">
+    </video>
+    <p class="small muted">Sample clip: Pexels, “Woman preparing food in the kitchen”. <a href="https://www.pexels.com/video/woman-preparing-food-in-the-kitchen-7351818/" target="_blank" rel="noreferrer">View source and licence</a>.</p>
+  </section>
+</main>
+<script src="/socket.io/socket.io.js"></script><script src="/static/customer.js"></script>
+</body></html>
